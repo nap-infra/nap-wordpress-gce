@@ -1,7 +1,7 @@
 #!/bin/bash
 
 VERSION=v0.0.8
-REPO_NAME=acd-onix-gce
+REPO_NAME=nap-wordpress-gce
 
 if [ $# -ne "1" ]; then
     echo "Arguments <dev|prod> are required!!!"
@@ -9,14 +9,14 @@ if [ $# -ne "1" ]; then
 fi
 
 ENVIRONMENT_ALIAS=$1
-BRANCH=develop
+BRANCH=development
 ENVIRONMENT=development
 
 if [ "${ENVIRONMENT_ALIAS}" == "dev" ]; then
-    BRANCH=develop
+    BRANCH=development
     ENVIRONMENT=development
 elif [ "${ENVIRONMENT_ALIAS}" == "prod" ]; then
-    BRANCH=main
+    BRANCH=production
     ENVIRONMENT=production
 fi
 
@@ -24,7 +24,7 @@ sudo docker run \
 -v $(pwd)/${REPO_NAME}-${ENVIRONMENT}:/wip/output \
 -v ${HOME}/.ssh/:/root/.ssh/ \
 -e IASC_VCS_MODE=git \
--e IASC_VCS_URL="https://github.com/its-software-services-customers/${REPO_NAME}.git" \
+-e IASC_VCS_URL="https://github.com/nap-infra/${REPO_NAME}.git" \
 -e IASC_VCS_REF=${BRANCH} \
 -e ENVIRONMENT_ALIAS=${ENVIRONMENT_ALIAS} \
 -e ENVIRONMENT=${ENVIRONMENT} \

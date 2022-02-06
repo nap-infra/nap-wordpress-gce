@@ -1,10 +1,10 @@
 
 
-module "acd-onix-gce-001" {
+module "nap-wordpress-gce-001" {
   source          = "git::https://github.com/its-software-services-devops/tf-module-gcp-vm.git//modules?ref=1.0.14"
-  compute_name    = "acd-onix-gce-${var.env_alias}-001"
+  compute_name    = "nap-wordpress-gce-${var.env_alias}-001"
   compute_seq     = ""
-  vm_tags         = ["acd-onix-gce"]
+  vm_tags         = ["nap-wordpress-gce"]
   vm_service_account = ""
   
   # For some reason the Ubuntu image will not allow terraform to connect to VM - "projects/ubuntu-os-cloud/global/images/ubuntu-2004-focal-v20210927"
@@ -30,12 +30,12 @@ module "acd-onix-gce-001" {
 
 resource "google_compute_disk_resource_policy_attachment" "attachment-001" {
   name = google_compute_resource_policy.snapshot-policy-001.name
-  disk = "acd-onix-gce-${var.env_alias}-001"
+  disk = "nap-wordpress-gce-${var.env_alias}-001"
   zone = "asia-southeast1-b"
 }
 
 resource "google_compute_resource_policy" "snapshot-policy-001" {
-  name = "acd-onix-gce-${var.env_alias}-001"
+  name = "nap-wordpress-gce-${var.env_alias}-001"
   region = "asia-southeast1"
   snapshot_schedule_policy {
     schedule {
@@ -48,6 +48,6 @@ resource "google_compute_resource_policy" "snapshot-policy-001" {
     retention_policy {
       max_retention_days    = 7
       on_source_disk_delete = "KEEP_AUTO_SNAPSHOTS"
-    }    
+    }
   }
 }

@@ -1,7 +1,7 @@
 terraform {
   backend "gcs" {
-    bucket  = "acd-prod-terraform-states"
-    prefix = "acd-onix-gce"
+    bucket  = "nap-prod-terraform-states"
+    prefix = "nap-wordpress-gce"
   }
   required_providers {
     google = "3.76.0"
@@ -9,6 +9,6 @@ terraform {
 }
 
 provider "google" {
-  project     = "acd-prod-291913"
+  project     = "nap-devops-prod"
   region      = "asia-southeast1"
 }
