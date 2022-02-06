@@ -24,7 +24,7 @@ copy:
   - from: 02-configs/gce-setting-${ENV.ENVIRONMENT}.tf
     toDir: ""
 
-  - from: gs://nap-devops-${ENV.ENVIRONMENT_ALIAS}-vault/nap-wordpress/*
+  - from: gs://nap-devops-${ENV.ENVIRONMENT}-vault/nap-wordpress/*
     toDir: ""
 
 infraIasc: []
