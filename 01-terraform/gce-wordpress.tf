@@ -19,7 +19,7 @@ module "nap-wordpress-gce-001" {
   provisioner_local_path  = "setup.bash"
   provisioner_remote_path = "/home/devops"
   external_disks   = []
-  network_configs  = [{index = 1, network = "default", nat_ip = ""}]
+  network_configs  = [{index = 1, network = "projects/nap-infra/regions/asia-southeast1/subnetworks/devops-nonprod-web", nat_ip = ""}]
   create_nat_ip = true
   remote_exec_by_nat_ip = true
   startup_script_local_path = "startup.bash"
